@@ -47,8 +47,8 @@ class SceneKitViewController : UIViewController {
         let upBy2 = SCNAction.moveBy(SCNVector3(0.0, 2.0, 0.0), duration: 0.2)
         let upBy7point5 = SCNAction.moveBy(SCNVector3(0.0, 7.5, 0.0), duration: 0.2)
         let rotateTo0 = SCNAction.rotateToAxisAngle(SCNVector4(0.0, 0.0, 0.0, 0.0), duration: 0.2)
-        let inflate = SCNAction.scaleBy(2.0, duration: 2.0)
-        let deflate = SCNAction.scaleBy(0.5, duration: 2.0)
+        let inflate = SCNAction.scaleBy(2.0, duration: 0.3)
+        let deflate = SCNAction.scaleBy(0.5, duration: 0.3)
         let inflateSequence = SCNAction.sequence([inflate, deflate])
         
         SCNTransaction.begin()
@@ -70,15 +70,18 @@ class SceneKitViewController : UIViewController {
         lineNode5?.runAction(rotateTo0)
         
         //TODO: Fix this pyramid of doom
-        /*lineNode4?.runAction(inflateSequence, completionHandler: )
-        lineNode2?.runAction(inflateSequence)
-        lineNode1?.runAction(inflateSequence)
-        lineNode3?.runAction(inflateSequence)
-        lineNode5?.runAction(inflateSequence)*/
+        //TODO: Break this out
+        lineNode4?.runAction(inflateSequence) {
+            lineNode2?.runAction(inflateSequence) {
+                lineNode1?.runAction(inflateSequence) {
+                    lineNode3?.runAction(inflateSequence) {
+                        lineNode5?.runAction(inflateSequence)
+                    }
+                }
+            }
+        }
 
     }
-    
-    
     
     @IBAction func onParticlesChanged(sender: UISlider) {
         particleSystem.particleSize = CGFloat(Float(13.0) * sender.value)
@@ -249,11 +252,6 @@ class SceneKitViewController : UIViewController {
         emoticonNode.addChildNode(lineNode5)
         
         return emoticonNode
-    }
-    
-    func runAnimation(node: SCNNode) {
-        //Assumes there's only one action
-        node.runAction(node.actionForKey(node.actionKeys[0])!)
     }
     
     func randomRotation() -> SCNMatrix4 {
