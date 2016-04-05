@@ -70,8 +70,6 @@ class ViewController: UIViewController {
             shapeLayer.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
         }
         
-        shapeLayer.backgroundColor = UIColor.magentaColor().CGColor
-        
         createCircle(loopPath, layer: shapeLayer, color: color)
         
         
@@ -88,6 +86,7 @@ class ViewController: UIViewController {
             startAngle: ovalStartAngle,
             endAngle: ovalEndAngle,
             clockwise: true)
+        
         let orbitLayer = CAShapeLayer()
         orbitLayer.path = orbiter.CGPath
         if( color != nil) {
@@ -99,7 +98,6 @@ class ViewController: UIViewController {
         if let inverseRotationTransform = calcInverse4x4(getRotationMatrix(layer.transform)) {
             print("Applying inverse rotation")
             orbitLayer.transform = inverseRotationTransform
-            print(orbitLayer.transform)
         }
         
         // TODO: Rotate orbitLayer so that it's prersepctive faces the camera (or just replace the circle with a sphere...)
@@ -232,7 +230,7 @@ class ViewController: UIViewController {
         let rZ2 = transform.m23 / scalingMatrix[2]
         let rZ3 = transform.m33 / scalingMatrix[2]
         
-        return CATransform3D(m11: rX1, m12: rY1, m13: rZ1, m14: 0, m21: rX2, m22: rY2, m23: rZ2, m24: 0, m31: rX3, m32: rY3, m33: rZ3, m34: 0, m41:0, m42:0, m43: 0, m44: 0)
+        return CATransform3D(m11: rX1, m12: rY1, m13: rZ1, m14: 0, m21: rX2, m22: rY2, m23: rZ2, m24: 0, m31: rX3, m32: rY3, m33: rZ3, m34: 0, m41:0, m42:0, m43: 0, m44: 1)
     }
     
     func calcScalar(vals: CGFloat...) -> CGFloat {

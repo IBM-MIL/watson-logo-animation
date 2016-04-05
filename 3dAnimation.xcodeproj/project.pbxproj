@@ -15,6 +15,13 @@
 		B19492EF1CA1C2CE00568F85 /* _dAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19492EE1CA1C2CE00568F85 /* _dAnimationTests.swift */; };
 		B19492FA1CA1C2CE00568F85 /* _dAnimationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19492F91CA1C2CE00568F85 /* _dAnimationUITests.swift */; };
 		B19493081CA1C2E000568F85 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19493071CA1C2E000568F85 /* QuartzCore.framework */; };
+		B19493551CA9D05600568F85 /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19493541CA9D05600568F85 /* SceneKitViewController.swift */; };
+		B19493581CAB1DDC00568F85 /* SceneKitSmoke.scnp in Resources */ = {isa = PBXBuildFile; fileRef = B19493561CAB1DDC00568F85 /* SceneKitSmoke.scnp */; };
+		B19493591CAB1DDC00568F85 /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = B19493571CAB1DDC00568F85 /* smoke.png */; };
+		B194935B1CAB23D900568F85 /* smoke2.png in Resources */ = {isa = PBXBuildFile; fileRef = B194935A1CAB23D900568F85 /* smoke2.png */; };
+		B194935D1CAD7A6500568F85 /* whereisthepool.wav in Resources */ = {isa = PBXBuildFile; fileRef = B194935C1CAD7A6500568F85 /* whereisthepool.wav */; };
+		B194935F1CADAF8600568F85 /* cometShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = B194935E1CADAF8600568F85 /* cometShader.fsh */; };
+		B19493611CADAF9F00568F85 /* cometShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = B19493601CADAF9F00568F85 /* cometShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		B19492F91CA1C2CE00568F85 /* _dAnimationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _dAnimationUITests.swift; sourceTree = "<group>"; };
 		B19492FB1CA1C2CE00568F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B19493071CA1C2E000568F85 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B19493541CA9D05600568F85 /* SceneKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
+		B19493561CAB1DDC00568F85 /* SceneKitSmoke.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = SceneKitSmoke.scnp; sourceTree = "<group>"; };
+		B19493571CAB1DDC00568F85 /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
+		B194935A1CAB23D900568F85 /* smoke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke2.png; sourceTree = "<group>"; };
+		B194935C1CAD7A6500568F85 /* whereisthepool.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whereisthepool.wav; sourceTree = "<group>"; };
+		B194935E1CADAF8600568F85 /* cometShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cometShader.fsh; sourceTree = "<group>"; };
+		B19493601CADAF9F00568F85 /* cometShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cometShader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +121,13 @@
 				B19492E01CA1C2CE00568F85 /* Assets.xcassets */,
 				B19492E21CA1C2CE00568F85 /* LaunchScreen.storyboard */,
 				B19492E51CA1C2CE00568F85 /* Info.plist */,
+				B19493541CA9D05600568F85 /* SceneKitViewController.swift */,
+				B19493561CAB1DDC00568F85 /* SceneKitSmoke.scnp */,
+				B19493571CAB1DDC00568F85 /* smoke.png */,
+				B194935A1CAB23D900568F85 /* smoke2.png */,
+				B194935C1CAD7A6500568F85 /* whereisthepool.wav */,
+				B194935E1CADAF8600568F85 /* cometShader.fsh */,
+				B19493601CADAF9F00568F85 /* cometShader.vsh */,
 			);
 			path = 3dAnimation;
 			sourceTree = "<group>";
@@ -233,8 +254,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B194935B1CAB23D900568F85 /* smoke2.png in Resources */,
 				B19492E41CA1C2CE00568F85 /* LaunchScreen.storyboard in Resources */,
+				B19493581CAB1DDC00568F85 /* SceneKitSmoke.scnp in Resources */,
+				B194935D1CAD7A6500568F85 /* whereisthepool.wav in Resources */,
+				B19493591CAB1DDC00568F85 /* smoke.png in Resources */,
+				B194935F1CADAF8600568F85 /* cometShader.fsh in Resources */,
 				B19492E11CA1C2CE00568F85 /* Assets.xcassets in Resources */,
+				B19493611CADAF9F00568F85 /* cometShader.vsh in Resources */,
 				B19492DF1CA1C2CE00568F85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B19493551CA9D05600568F85 /* SceneKitViewController.swift in Sources */,
 				B19492DC1CA1C2CE00568F85 /* ViewController.swift in Sources */,
 				B19492DA1CA1C2CE00568F85 /* AppDelegate.swift in Sources */,
 			);
@@ -488,6 +516,7 @@
 				B19493001CA1C2CE00568F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B19493011CA1C2CE00568F85 /* Build configuration list for PBXNativeTarget "3dAnimationTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +525,7 @@
 				B19493031CA1C2CE00568F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B19493041CA1C2CE00568F85 /* Build configuration list for PBXNativeTarget "3dAnimationUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +534,7 @@
 				B19493061CA1C2CE00568F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

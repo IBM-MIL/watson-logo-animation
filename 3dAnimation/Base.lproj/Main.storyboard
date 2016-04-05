@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Va0-VO-ZDd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_dAnimation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,6 +22,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Scene Kit View Controller-->
+        <scene sceneID="mBf-I4-pt3">
+            <objects>
+                <viewController id="Va0-VO-ZDd" customClass="SceneKitViewController" customModule="_dAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cGV-Pn-HYY"/>
+                        <viewControllerLayoutGuide type="bottom" id="SyA-dG-bqH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cXe-pN-Bxo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0r-Gd-9T1">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="6H8-zn-Rh9"/>
+                                    <constraint firstAttribute="width" constant="300" id="lrc-YQ-poc"/>
+                                </constraints>
+                            </sceneKitView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="muX-So-OvC">
+                                <rect key="frame" x="152.5" y="531" width="295" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="eSh-FD-i3H"/>
+                                    <constraint firstAttribute="width" constant="291" id="fAG-Ml-btI"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="onParticlesChanged:" destination="Va0-VO-ZDd" eventType="valueChanged" id="N7u-el-fTJ"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iu5-t8-ZaK">
+                                <rect key="frame" x="378" y="479" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="5E2-c0-WK9"/>
+                                    <constraint firstAttribute="height" constant="30" id="QB0-bW-q7x"/>
+                                </constraints>
+                                <state key="normal" title="Speak"/>
+                                <connections>
+                                    <action selector="onSpeakPressed:" destination="Va0-VO-ZDd" eventType="touchUpInside" id="CU7-cU-K4V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqT-Iu-e1c">
+                                <rect key="frame" x="187" y="479" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4Gq-rG-S5R"/>
+                                    <constraint firstAttribute="width" constant="46" id="eah-ob-L7C"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onAnimatePressed:" destination="Va0-VO-ZDd" eventType="touchUpInside" id="onI-4v-ZeA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iu5-t8-ZaK" firstAttribute="top" secondItem="e0r-Gd-9T1" secondAttribute="bottom" constant="29" id="51D-wK-dJn"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="PqT-Iu-e1c" secondAttribute="bottom" constant="22" id="8SA-fm-vMY"/>
+                            <constraint firstAttribute="trailing" secondItem="muX-So-OvC" secondAttribute="trailing" constant="154.5" id="CLa-53-fQh"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="PqT-Iu-e1c" secondAttribute="bottom" constant="22" id="CXW-Yp-9Pt"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="leading" secondItem="cXe-pN-Bxo" secondAttribute="leadingMargin" constant="223" id="GM6-80-73E"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="PqT-Iu-e1c" secondAttribute="bottom" constant="91" id="IkA-wO-e0F"/>
+                            <constraint firstItem="e0r-Gd-9T1" firstAttribute="centerY" secondItem="cXe-pN-Bxo" secondAttribute="centerY" id="JzI-Vr-k6K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="muX-So-OvC" secondAttribute="trailing" constant="223" id="L5z-6A-6yV"/>
+                            <constraint firstItem="e0r-Gd-9T1" firstAttribute="centerX" secondItem="cXe-pN-Bxo" secondAttribute="centerX" id="UXH-fF-3Bx"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="iu5-t8-ZaK" secondAttribute="bottom" constant="22" id="Zc1-HR-Bjg"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="iu5-t8-ZaK" secondAttribute="bottom" constant="22" id="c5t-cy-J5L"/>
+                            <constraint firstItem="PqT-Iu-e1c" firstAttribute="leading" secondItem="cXe-pN-Bxo" secondAttribute="leading" constant="187" id="eAd-Fd-G0P"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="leading" secondItem="cXe-pN-Bxo" secondAttribute="leading" constant="154.5" id="iLq-RE-uHc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iu5-t8-ZaK" secondAttribute="bottom" constant="91" id="kCp-I3-lS1"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="e0r-Gd-9T1" secondAttribute="bottom" constant="81" id="olo-GM-NGG"/>
+                            <constraint firstItem="muX-So-OvC" firstAttribute="centerX" secondItem="cXe-pN-Bxo" secondAttribute="centerX" id="q0i-Fz-O4b"/>
+                            <constraint firstItem="PqT-Iu-e1c" firstAttribute="leading" secondItem="cXe-pN-Bxo" secondAttribute="leading" constant="187" id="vcw-XK-m3f"/>
+                            <constraint firstItem="iu5-t8-ZaK" firstAttribute="leading" secondItem="PqT-Iu-e1c" secondAttribute="trailing" constant="145" id="w3u-Gj-pOs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="IkA-wO-e0F"/>
+                                <exclude reference="eAd-Fd-G0P"/>
+                                <exclude reference="CXW-Yp-9Pt"/>
+                                <exclude reference="GM6-80-73E"/>
+                                <exclude reference="L5z-6A-6yV"/>
+                                <exclude reference="c5t-cy-J5L"/>
+                                <exclude reference="51D-wK-dJn"/>
+                                <exclude reference="kCp-I3-lS1"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="e0r-Gd-9T1" id="I4B-ai-0Mo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ckk-9e-Ceg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="943"/>
         </scene>
     </scenes>
 </document>
