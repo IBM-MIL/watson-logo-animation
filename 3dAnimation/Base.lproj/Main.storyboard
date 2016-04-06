@@ -71,8 +71,8 @@
                                     <action selector="onSpeakPressed:" destination="Va0-VO-ZDd" eventType="touchUpInside" id="CU7-cU-K4V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqT-Iu-e1c">
-                                <rect key="frame" x="154" y="479" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqT-Iu-e1c">
+                                <rect key="frame" x="154" y="479" width="38" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4Gq-rG-S5R"/>
                                     <constraint firstAttribute="width" constant="46" id="4oi-Zi-Wbj"/>
@@ -90,13 +90,29 @@
                                     <action selector="onAnimatePressed:" destination="Va0-VO-ZDd" eventType="touchUpInside" id="onI-4v-ZeA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQe-3m-CgT">
+                                <rect key="frame" x="285" y="479" width="30" height="30"/>
+                                <state key="normal" title="!"/>
+                                <connections>
+                                    <action selector="onSurprisePressed:" destination="Va0-VO-ZDd" eventType="touchUpInside" id="7gd-OE-F6F"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1u-UQ-7Pl">
+                                <rect key="frame" x="541" y="550" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="onResetPressed:" destination="Va0-VO-ZDd" eventType="touchUpInside" id="nEd-Sx-NLv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eQe-3m-CgT" firstAttribute="top" secondItem="PqT-Iu-e1c" secondAttribute="top" id="31U-ih-WI3"/>
                             <constraint firstItem="iu5-t8-ZaK" firstAttribute="top" secondItem="PqT-Iu-e1c" secondAttribute="top" id="42g-Av-Tdo"/>
                             <constraint firstItem="iu5-t8-ZaK" firstAttribute="top" secondItem="e0r-Gd-9T1" secondAttribute="bottom" constant="29" id="51D-wK-dJn"/>
                             <constraint firstItem="iu5-t8-ZaK" firstAttribute="trailing" secondItem="muX-So-OvC" secondAttribute="trailing" id="61O-Tg-SI3"/>
                             <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="PqT-Iu-e1c" secondAttribute="bottom" constant="22" id="8SA-fm-vMY"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="H1u-UQ-7Pl" secondAttribute="bottom" constant="20" id="B6I-JX-bhp"/>
                             <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="PqT-Iu-e1c" secondAttribute="bottom" constant="22" id="CXW-Yp-9Pt"/>
                             <constraint firstItem="muX-So-OvC" firstAttribute="leading" secondItem="cXe-pN-Bxo" secondAttribute="leadingMargin" constant="223" id="GM6-80-73E"/>
                             <constraint firstItem="PqT-Iu-e1c" firstAttribute="top" secondItem="e0r-Gd-9T1" secondAttribute="bottom" constant="29" id="IXo-wW-35m"/>
@@ -104,8 +120,10 @@
                             <constraint firstItem="e0r-Gd-9T1" firstAttribute="centerY" secondItem="cXe-pN-Bxo" secondAttribute="centerY" id="JzI-Vr-k6K"/>
                             <constraint firstAttribute="trailingMargin" secondItem="muX-So-OvC" secondAttribute="trailing" constant="223" id="L5z-6A-6yV"/>
                             <constraint firstItem="e0r-Gd-9T1" firstAttribute="centerX" secondItem="cXe-pN-Bxo" secondAttribute="centerX" id="UXH-fF-3Bx"/>
+                            <constraint firstAttribute="trailing" secondItem="H1u-UQ-7Pl" secondAttribute="trailing" constant="20" id="Y7I-X0-xgW"/>
                             <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="iu5-t8-ZaK" secondAttribute="bottom" constant="22" id="c5t-cy-J5L"/>
                             <constraint firstItem="PqT-Iu-e1c" firstAttribute="leading" secondItem="cXe-pN-Bxo" secondAttribute="leading" constant="187" id="eAd-Fd-G0P"/>
+                            <constraint firstItem="eQe-3m-CgT" firstAttribute="centerX" secondItem="cXe-pN-Bxo" secondAttribute="centerX" id="iWX-4x-ldQ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="iu5-t8-ZaK" secondAttribute="bottom" constant="91" id="kCp-I3-lS1"/>
                             <constraint firstItem="PqT-Iu-e1c" firstAttribute="leading" secondItem="muX-So-OvC" secondAttribute="leading" id="mbc-C0-FSk"/>
                             <constraint firstItem="muX-So-OvC" firstAttribute="top" secondItem="e0r-Gd-9T1" secondAttribute="bottom" constant="81" id="olo-GM-NGG"/>

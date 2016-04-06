@@ -35,6 +35,14 @@ class SceneKitViewController : UIViewController {
         player.play()
     }
     
+    @IBAction func onSurprisePressed(sender: AnyObject) {
+        alert()
+    }
+    
+    @IBAction func onResetPressed(sender: AnyObject) {
+        reset()
+    }
+
     @IBAction func onAnimatePressed(sender: AnyObject) {
         //this is only last for now, may have to change it later
         let emoticonNode = geometryNode.childNodes.last
@@ -44,11 +52,11 @@ class SceneKitViewController : UIViewController {
         let lineNode4 = emoticonNode?.childNodes[3]
         let lineNode5 = emoticonNode?.childNodes[4]
         
-        let upBy2 = SCNAction.moveBy(SCNVector3(0.0, 2.0, 0.0), duration: 0.2)
-        let upBy7point5 = SCNAction.moveBy(SCNVector3(0.0, 7.5, 0.0), duration: 0.2)
-        let rotateTo0 = SCNAction.rotateToAxisAngle(SCNVector4(0.0, 0.0, 0.0, 0.0), duration: 0.2)
-        let inflate = SCNAction.scaleBy(2.0, duration: 0.3)
-        let deflate = SCNAction.scaleBy(0.5, duration: 0.3)
+        let upBy2 = SCNAction.moveBy(SCNVector3(0.0, 2.0, 0.0), duration: 0.1)
+        let upBy7point5 = SCNAction.moveBy(SCNVector3(0.0, 7.5, 0.0), duration: 0.1)
+        let rotateTo0 = SCNAction.rotateToAxisAngle(SCNVector4(0.0, 0.0, 0.0, 0.0), duration: 0.1)
+        let inflate = SCNAction.scaleBy(2.0, duration: 0.2)
+        let deflate = SCNAction.scaleBy(0.5, duration: 0.2)
         let inflateSequence = SCNAction.sequence([inflate, deflate])
         
         SCNTransaction.begin()
@@ -71,6 +79,7 @@ class SceneKitViewController : UIViewController {
         
         //TODO: Fix this pyramid of doom
         //TODO: Break this out
+        //TODO: Allow this sequence to be broken. It can't be right now
         lineNode4?.runAction(inflateSequence) {
             lineNode2?.runAction(inflateSequence) {
                 lineNode1?.runAction(inflateSequence) {
@@ -81,6 +90,82 @@ class SceneKitViewController : UIViewController {
             }
         }
 
+    }
+    
+    func alert() {
+        //this is only last for now, may have to change it later
+        //there's gotta be a better way to do this...
+        let emoticonNode = geometryNode.childNodes.last
+        let lineNode1 = emoticonNode?.childNodes[0]
+        let lineNode2 = emoticonNode?.childNodes[1]
+        let lineNode3 = emoticonNode?.childNodes[2]
+        let lineNode4 = emoticonNode?.childNodes[3]
+        let lineNode5 = emoticonNode?.childNodes[4]
+        
+        lineNode1?.runAction(SCNAction.scaleTo(1.5, duration: 0.1))
+        
+        lineNode2?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: 0.0, duration: 0.1))
+        lineNode2?.runAction(SCNAction.moveTo(SCNVector3(0.0, 25.0, 0.0), duration: 0.1))
+        
+        SCNTransaction.begin()
+        SCNTransaction.setAnimationDuration(0.2)
+        let line1 = lineNode1?.geometry as! SCNBox
+        let line2 = lineNode2?.geometry as! SCNBox
+        let line3 = lineNode3?.geometry as! SCNBox
+        let line4 = lineNode4?.geometry as! SCNBox
+        let line5 = lineNode5?.geometry as! SCNBox
+        line1.height = 2.0
+        line2.height = 10.0
+        line3.height = 4.0
+        line4.height = 4.0
+        line5.height = 6.0
+        SCNTransaction.commit()
+        
+        lineNode3?.runAction(SCNAction.moveTo(SCNVector3(9.0, 13.0, 0.0), duration: 0.1))
+        lineNode3?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: degreesToRadians(160), duration: 0.1))
+        
+        lineNode4?.runAction(SCNAction.moveTo(SCNVector3(14.0, 6.0, 0.0), duration: 0.1))
+        lineNode4?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: degreesToRadians(100), duration: 0.1))
+        
+        lineNode5?.runAction(SCNAction.moveTo(SCNVector3(13.0, 11.0, 0.0), duration: 0.1))
+        lineNode5?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: degreesToRadians(130), duration: 0.1))
+    }
+    
+    func reset() {
+        //this is only last for now, may have to change it later
+        //there's gotta be a better way to do this...
+        let emoticonNode = geometryNode.childNodes.last
+        let lineNode1 = emoticonNode?.childNodes[0]
+        let lineNode2 = emoticonNode?.childNodes[1]
+        let lineNode3 = emoticonNode?.childNodes[2]
+        let lineNode4 = emoticonNode?.childNodes[3]
+        let lineNode5 = emoticonNode?.childNodes[4]
+        
+        SCNTransaction.begin()
+        SCNTransaction.setAnimationDuration(0.2)
+        for node in (emoticonNode?.childNodes)! {
+            let prism = node.geometry as! SCNBox
+            prism.height = 6.0
+        }
+        
+        //3.0 is height / 2, but I really gotta decide how I'm gonna do scaling. Magic numbers are bad
+        lineNode1?.scale = SCNVector3(1.0, 1.0, 1.0)
+        lineNode1?.position = SCNVector3(0.0, 13.5 + 3.0, 0.0)
+        
+        lineNode2?.transform = SCNMatrix4MakeRotation(22.5, 0.0, 0.0, 1.0)
+        lineNode2?.position = SCNVector3(-8.0, 11.5 + 3.0, 0.0)
+        
+        lineNode3?.transform = SCNMatrix4MakeRotation(-22.5, 0.0, 0.0, 1.0)
+        lineNode3?.position = SCNVector3(8.0, 11.5 + 3.0, 0.0)
+        
+        lineNode4?.transform = SCNMatrix4MakeRotation(45.0, 0.0, 0.0, 1.0)
+        lineNode4?.position = SCNVector3(-14.0, 6.0 + 3.0, 0.0)
+        
+        lineNode5?.transform = SCNMatrix4MakeRotation(-45.0, 0.0, 0.0, 1.0)
+        lineNode5?.position = SCNVector3(14.0, 6.0 + 3.0, 0.0)
+        
+        SCNTransaction.commit()
+        
     }
     
     @IBAction func onParticlesChanged(sender: UISlider) {
@@ -274,6 +359,10 @@ class SceneKitViewController : UIViewController {
         let randomG = CGFloat(arc4random_uniform(UInt32(101))) / 100.0
         let randomB = CGFloat(arc4random_uniform(UInt32(101))) / 100.0
         return UIColor(red: randomR, green: randomG, blue: randomB, alpha: 1.0)
+    }
+    
+    func degreesToRadians(degrees: Double) -> CGFloat {
+        return CGFloat(degrees * M_PI / 180.0)
     }
     
     func panGesture(sender: UIPanGestureRecognizer) {
