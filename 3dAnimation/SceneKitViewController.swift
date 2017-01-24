@@ -31,19 +31,19 @@ class SceneKitViewController : UIViewController {
     //Colors
     static let watsonBlue = UIColor(red: 11/255, green: 152/255, blue: 232/255, alpha: 1.0)
     
-    @IBAction func onSpeakPressed(sender: AnyObject) {
+    @IBAction func onSpeakPressed(_ sender: AnyObject) {
         player.play()
     }
     
-    @IBAction func onSurprisePressed(sender: AnyObject) {
+    @IBAction func onSurprisePressed(_ sender: AnyObject) {
         alert()
     }
     
-    @IBAction func onResetPressed(sender: AnyObject) {
+    @IBAction func onResetPressed(_ sender: AnyObject) {
         reset()
     }
 
-    @IBAction func onAnimatePressed(sender: AnyObject) {
+    @IBAction func onAnimatePressed(_ sender: AnyObject) {
         //this is only last for now, may have to change it later
         let emoticonNode = geometryNode.childNodes.last
         let lineNode1 = emoticonNode?.childNodes[0]
@@ -52,15 +52,15 @@ class SceneKitViewController : UIViewController {
         let lineNode4 = emoticonNode?.childNodes[3]
         let lineNode5 = emoticonNode?.childNodes[4]
         
-        let upBy2 = SCNAction.moveBy(SCNVector3(0.0, 2.0, 0.0), duration: 0.1)
-        let upBy7point5 = SCNAction.moveBy(SCNVector3(0.0, 7.5, 0.0), duration: 0.1)
-        let rotateTo0 = SCNAction.rotateToAxisAngle(SCNVector4(0.0, 0.0, 0.0, 0.0), duration: 0.1)
-        let inflate = SCNAction.scaleBy(2.0, duration: 0.2)
-        let deflate = SCNAction.scaleBy(0.5, duration: 0.2)
+        let upBy2 = SCNAction.move(by: SCNVector3(0.0, 2.0, 0.0), duration: 0.1)
+        let upBy7point5 = SCNAction.move(by: SCNVector3(0.0, 7.5, 0.0), duration: 0.1)
+        let rotateTo0 = SCNAction.rotate(toAxisAngle: SCNVector4(0.0, 0.0, 0.0, 0.0), duration: 0.1)
+        let inflate = SCNAction.scale(by: 2.0, duration: 0.2)
+        let deflate = SCNAction.scale(by: 0.5, duration: 0.2)
         let inflateSequence = SCNAction.sequence([inflate, deflate])
         
         SCNTransaction.begin()
-        SCNTransaction.setAnimationDuration(0.2)
+        SCNTransaction.animationDuration = 0.2
         for node in (emoticonNode?.childNodes)! {
             let prism = node.geometry as! SCNBox
             prism.height = 2
@@ -102,13 +102,13 @@ class SceneKitViewController : UIViewController {
         let lineNode4 = emoticonNode?.childNodes[3]
         let lineNode5 = emoticonNode?.childNodes[4]
         
-        lineNode1?.runAction(SCNAction.scaleTo(1.5, duration: 0.1))
+        lineNode1?.runAction(SCNAction.scale(to: 1.5, duration: 0.1))
         
-        lineNode2?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: 0.0, duration: 0.1))
-        lineNode2?.runAction(SCNAction.moveTo(SCNVector3(0.0, 25.0, 0.0), duration: 0.1))
+        lineNode2?.runAction(SCNAction.rotateTo(x: 0.0, y: 0.0, z: 0.0, duration: 0.1))
+        lineNode2?.runAction(SCNAction.move(to: SCNVector3(0.0, 25.0, 0.0), duration: 0.1))
         
         SCNTransaction.begin()
-        SCNTransaction.setAnimationDuration(0.2)
+        SCNTransaction.animationDuration = 0.2
         let line1 = lineNode1?.geometry as! SCNBox
         let line2 = lineNode2?.geometry as! SCNBox
         let line3 = lineNode3?.geometry as! SCNBox
@@ -121,14 +121,14 @@ class SceneKitViewController : UIViewController {
         line5.height = 6.0
         SCNTransaction.commit()
         
-        lineNode3?.runAction(SCNAction.moveTo(SCNVector3(9.0, 13.0, 0.0), duration: 0.1))
-        lineNode3?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: degreesToRadians(160), duration: 0.1))
+        lineNode3?.runAction(SCNAction.move(to: SCNVector3(9.0, 13.0, 0.0), duration: 0.1))
+        lineNode3?.runAction(SCNAction.rotateTo(x: 0.0, y: 0.0, z: degreesToRadians(160), duration: 0.1))
         
-        lineNode4?.runAction(SCNAction.moveTo(SCNVector3(14.0, 6.0, 0.0), duration: 0.1))
-        lineNode4?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: degreesToRadians(100), duration: 0.1))
+        lineNode4?.runAction(SCNAction.move(to: SCNVector3(14.0, 6.0, 0.0), duration: 0.1))
+        lineNode4?.runAction(SCNAction.rotateTo(x: 0.0, y: 0.0, z: degreesToRadians(100), duration: 0.1))
         
-        lineNode5?.runAction(SCNAction.moveTo(SCNVector3(13.0, 11.0, 0.0), duration: 0.1))
-        lineNode5?.runAction(SCNAction.rotateToX(0.0, y: 0.0, z: degreesToRadians(130), duration: 0.1))
+        lineNode5?.runAction(SCNAction.move(to: SCNVector3(13.0, 11.0, 0.0), duration: 0.1))
+        lineNode5?.runAction(SCNAction.rotateTo(x: 0.0, y: 0.0, z: degreesToRadians(130), duration: 0.1))
     }
     
     func reset() {
@@ -142,7 +142,7 @@ class SceneKitViewController : UIViewController {
         let lineNode5 = emoticonNode?.childNodes[4]
         
         SCNTransaction.begin()
-        SCNTransaction.setAnimationDuration(0.2)
+        SCNTransaction.animationDuration = 0.2
         for node in (emoticonNode?.childNodes)! {
             let prism = node.geometry as! SCNBox
             prism.height = 6.0
@@ -168,7 +168,7 @@ class SceneKitViewController : UIViewController {
         
     }
     
-    @IBAction func onParticlesChanged(sender: UISlider) {
+    @IBAction func onParticlesChanged(_ sender: UISlider) {
         particleSystem.particleSize = CGFloat(Float(13.0) * sender.value)
         particleSystem.particleColor = UIColor(red: 11/255, green: 152/255, blue: 232/255, alpha: CGFloat(sender.value))
     }
@@ -176,29 +176,29 @@ class SceneKitViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let testFile = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("whereisthepool", ofType: "wav")!)
+        let testFile = URL(fileURLWithPath: Bundle.main.path(forResource: "whereisthepool", ofType: "wav")!)
         
         do{
-            try player = AVAudioPlayer(contentsOfURL: testFile)
-            player.meteringEnabled = true
+            try player = AVAudioPlayer(contentsOf: testFile)
+            player.isMeteringEnabled = true
             
         } catch {
             print("Error finding audio resource")
         }
         
-        guard let pathFrag = NSBundle.mainBundle().pathForResource("cometShader", ofType: "fsh") else {
+        guard let pathFrag = Bundle.main.path(forResource: "cometShader", ofType: "fsh") else {
             print("Error finding cometShader fragment shader")
             return
         }
         
-        guard let pathVert = NSBundle.mainBundle().pathForResource("cometShader", ofType: "vsh") else {
+        guard let pathVert = Bundle.main.path(forResource: "cometShader", ofType: "vsh") else {
             print("Error finding cometShader vertex shader")
             return
         }
         
         do {
-            let fragmentSource = try String(contentsOfFile: pathFrag, encoding: NSUTF8StringEncoding)
-            let vertexSource = try String(contentsOfFile: pathVert, encoding: NSUTF8StringEncoding)
+            let fragmentSource = try String(contentsOfFile: pathFrag, encoding: String.Encoding.utf8)
+            let vertexSource = try String(contentsOfFile: pathVert, encoding: String.Encoding.utf8)
             program.fragmentShader = fragmentSource as String
             program.vertexShader = vertexSource as String
             program.setSemantic(SCNModelViewProjectionTransform, forSymbol: "u_MVPMatrix", options: nil)
@@ -208,7 +208,7 @@ class SceneKitViewController : UIViewController {
             print("Error loading shaders")
         }
         
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
         setupScene()
     }
     
@@ -217,13 +217,13 @@ class SceneKitViewController : UIViewController {
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
         
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLightTypeOmni
+        omniLightNode.light!.type = SCNLight.LightType.omni
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50, 50)
         scene.rootNode.addChildNode(omniLightNode)
@@ -248,10 +248,10 @@ class SceneKitViewController : UIViewController {
         geometryNode = mainNode
         
         //TODO: Add full camera control, not just pan
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: "panGesture:")
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(SceneKitViewController.panGesture(_:)))
         sceneView.addGestureRecognizer(panRecognizer)
         
-        sceneView.backgroundColor = UIColor.blackColor()
+        sceneView.backgroundColor = UIColor.black
         
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true
@@ -260,7 +260,7 @@ class SceneKitViewController : UIViewController {
         sceneView.delegate = self
     }
     
-    func createOrbit(radius: CGFloat, color: SCNMaterial, girth: CGFloat? = 0.5, transform: SCNMatrix4? = nil) -> SCNNode {
+    func createOrbit(_ radius: CGFloat, color: SCNMaterial, girth: CGFloat? = 0.5, transform: SCNMatrix4? = nil) -> SCNNode {
         
         let ring = SCNTorus(ringRadius: radius, pipeRadius: girth!)
         ring.materials = [color]
@@ -276,8 +276,8 @@ class SceneKitViewController : UIViewController {
         let nullNode = SCNNode()
         nullNode.position = SCNVector3(0,0,0)
         //TODO: Allow modification of this rotation (probably just positive, negative, and duration)
-        let action = SCNAction.rotateByAngle(90, aroundAxis: SCNVector3(0, 1, 0), duration: 30)
-        nullNode.runAction(SCNAction.repeatActionForever(action))
+        let action = SCNAction.rotate(by: 90, around: SCNVector3(0, 1, 0), duration: 30)
+        nullNode.runAction(SCNAction.repeatForever(action))
         ringNode.addChildNode(nullNode)
         
         let sphereGeometry = SCNSphere(radius: girth! * 2)
@@ -295,7 +295,7 @@ class SceneKitViewController : UIViewController {
         return ringNode
     }
     
-    func createEmoticon(color: SCNMaterial, height: CGFloat? = 6.0) -> SCNNode {
+    func createEmoticon(_ color: SCNMaterial, height: CGFloat? = 6.0) -> SCNNode {
         //height may need to be something relative to radius. I don't wanna say 1/3 but it kinda looks like it might be...
         //chamferRadius can at most be half the width. If doing it with a box doens't work, will probably have to create a custom geometery from a UIBezierCurve
         let line1 = SCNBox(width: 2.0, height: height!, length: 2.0, chamferRadius: 5.0)
@@ -361,18 +361,18 @@ class SceneKitViewController : UIViewController {
         return UIColor(red: randomR, green: randomG, blue: randomB, alpha: 1.0)
     }
     
-    func degreesToRadians(degrees: Double) -> CGFloat {
+    func degreesToRadians(_ degrees: Double) -> CGFloat {
         return CGFloat(degrees * M_PI / 180.0)
     }
     
-    func panGesture(sender: UIPanGestureRecognizer) {
-        let translation = sender.translationInView(sender.view!)
+    func panGesture(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: sender.view!)
         var newAngle = (Float)(translation.x) * (Float)(M_PI)/180.0
         newAngle += currentAngle
         
         geometryNode.transform = SCNMatrix4MakeRotation(newAngle, 0, 1, 0)
         
-        if( sender.state == UIGestureRecognizerState.Ended) {
+        if( sender.state == UIGestureRecognizerState.ended) {
             currentAngle = newAngle
         }
     }
@@ -385,13 +385,13 @@ class SceneKitViewController : UIViewController {
 
 extension SceneKitViewController : SCNSceneRendererDelegate {
     
-    func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval) {
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         //TODO: set birthrate/particleSize to 0 if no internet connection
-        if player.playing {
+        if player.isPlaying {
             player.updateMeters()
-            particleSystem.particleSize = CGFloat(-1 / player.peakPowerForChannel(0) * 50)
-            print(player.peakPowerForChannel(0))
-            particleSystem.particleColor = UIColor(red: 11/255, green: 152/255, blue: 232/255, alpha: CGFloat(-1/player.peakPowerForChannel(0) * 30))
+            particleSystem.particleSize = CGFloat(-1 / player.peakPower(forChannel: 0) * 50)
+            print(player.peakPower(forChannel: 0))
+            particleSystem.particleColor = UIColor(red: 11/255, green: 152/255, blue: 232/255, alpha: CGFloat(-1/player.peakPower(forChannel: 0) * 30))
         } else {
             //TODO: set particle to a reasonable size when not speaking
         }
