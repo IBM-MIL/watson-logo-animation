@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026187591E380F7400F88E88 /* IBMWLA_SCNNodeAgent_Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026187581E380F7400F88E88 /* IBMWLA_SCNNodeAgent_Emoticon.swift */; };
+		028F39A11E390F2C0018F233 /* IBMWLA_SCNNodeAgent_Orbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028F39A01E390F2C0018F233 /* IBMWLA_SCNNodeAgent_Orbits.swift */; };
+		028F39A31E390F540018F233 /* IBMWLA_Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028F39A21E390F540018F233 /* IBMWLA_Random.swift */; };
 		B19492DA1CA1C2CE00568F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19492D91CA1C2CE00568F85 /* AppDelegate.swift */; };
 		B19492DC1CA1C2CE00568F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19492DB1CA1C2CE00568F85 /* ViewController.swift */; };
 		B19492DF1CA1C2CE00568F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B19492DD1CA1C2CE00568F85 /* Main.storyboard */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026187581E380F7400F88E88 /* IBMWLA_SCNNodeAgent_Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBMWLA_SCNNodeAgent_Emoticon.swift; sourceTree = "<group>"; };
+		028F39A01E390F2C0018F233 /* IBMWLA_SCNNodeAgent_Orbits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBMWLA_SCNNodeAgent_Orbits.swift; sourceTree = "<group>"; };
+		028F39A21E390F540018F233 /* IBMWLA_Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBMWLA_Random.swift; sourceTree = "<group>"; };
 		B19492D61CA1C2CE00568F85 /* 3dAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3dAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19492D91CA1C2CE00568F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B19492DB1CA1C2CE00568F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,9 +97,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		026187551E380F1A00F88E88 /* Framework-IBMWLA */ = {
+			isa = PBXGroup;
+			children = (
+				026187561E380F1A00F88E88 /* 6-SCN */,
+			);
+			path = "Framework-IBMWLA";
+			sourceTree = "<group>";
+		};
+		026187561E380F1A00F88E88 /* 6-SCN */ = {
+			isa = PBXGroup;
+			children = (
+				026187571E380F1A00F88E88 /* NodeAgent */,
+				028F39A21E390F540018F233 /* IBMWLA_Random.swift */,
+			);
+			path = "6-SCN";
+			sourceTree = "<group>";
+		};
+		026187571E380F1A00F88E88 /* NodeAgent */ = {
+			isa = PBXGroup;
+			children = (
+				026187581E380F7400F88E88 /* IBMWLA_SCNNodeAgent_Emoticon.swift */,
+				028F39A01E390F2C0018F233 /* IBMWLA_SCNNodeAgent_Orbits.swift */,
+			);
+			path = NodeAgent;
+			sourceTree = "<group>";
+		};
 		B19492CD1CA1C2CE00568F85 = {
 			isa = PBXGroup;
 			children = (
+				026187551E380F1A00F88E88 /* Framework-IBMWLA */,
 				B19493071CA1C2E000568F85 /* QuartzCore.framework */,
 				B19492D81CA1C2CE00568F85 /* 3dAnimation */,
 				B19492ED1CA1C2CE00568F85 /* 3dAnimationTests */,
@@ -218,6 +251,7 @@
 				TargetAttributes = {
 					B19492D51CA1C2CE00568F85 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5823N3XW52;
 						LastSwiftMigration = 0820;
 					};
 					B19492E91CA1C2CE00568F85 = {
@@ -290,8 +324,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028F39A11E390F2C0018F233 /* IBMWLA_SCNNodeAgent_Orbits.swift in Sources */,
+				028F39A31E390F540018F233 /* IBMWLA_Random.swift in Sources */,
 				B19493551CA9D05600568F85 /* SceneKitViewController.swift in Sources */,
 				B19492DC1CA1C2CE00568F85 /* ViewController.swift in Sources */,
+				026187591E380F7400F88E88 /* IBMWLA_SCNNodeAgent_Emoticon.swift in Sources */,
 				B19492DA1CA1C2CE00568F85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5823N3XW52;
 				INFOPLIST_FILE = 3dAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.mil.-dAnimation";
@@ -446,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5823N3XW52;
 				INFOPLIST_FILE = 3dAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.mil.-dAnimation";
