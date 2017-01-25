@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
         let av = createAvatarFrame()
         
         for _ in 1 ... 13 {
@@ -32,42 +32,42 @@ class ViewController: UIViewController {
     
     func createAvatarFrame() -> CALayer {
         let container = CALayer()
-        let x = CGRectGetMidX(view.bounds)
-        let y = CGRectGetMidY(view.bounds)
-        container.frame = CGRectMake(x-80, y-80, 160, 160)
+        let x = view.bounds.midX
+        let y = view.bounds.midY
+        container.frame = CGRect(x: x-80, y: y-80, width: 160, height: 160)
         self.view.layer.addSublayer(container)
         
         return container
     }
     
-    func createOrbitLayer(transform: CATransform3D? = nil, color: CGColor? = nil) -> CAShapeLayer {
+    func createOrbitLayer(_ transform: CATransform3D? = nil, color: CGColor? = nil) -> CAShapeLayer {
         let loopPath = UIBezierPath()
         
-        let x = CGRectGetMidX(view.bounds)
-        let y = CGRectGetMidY(view.bounds)
+        let x = view.bounds.midX
+        let y = view.bounds.midY
         
         //TODO: Fix boundingRect so that it's more customizable
-        let boundingRect = CGRectMake(x-80, y-80, 160, 160)
+        let boundingRect = CGRect(x: x-80, y: y-80, width: 160, height: 160)
         
         let ovalStartAngle = CGFloat(90.01 * M_PI/180)
         let ovalEndAngle = CGFloat(90 * M_PI/180 + 2*M_PI)
         //TODO: Fix the center point to line up with a more dynamic boundingRect
-        loopPath.addArcWithCenter(CGPointMake(80, 80),
-            radius: CGRectGetWidth(boundingRect) / 2,
+        loopPath.addArc(withCenter: CGPoint(x: 80, y: 80),
+            radius: boundingRect.width / 2,
             startAngle: ovalStartAngle,
             endAngle: ovalEndAngle, clockwise: true)
         
         let shapeLayer = CAShapeLayer()
-        shapeLayer.path = loopPath.CGPath
+        shapeLayer.path = loopPath.cgPath
         if(transform != nil) {
             shapeLayer.transform = transform!
         }
         shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
         if(color != nil) {
             shapeLayer.strokeColor = color!
         } else {
-            shapeLayer.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
+            shapeLayer.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         }
         
         createCircle(loopPath, layer: shapeLayer, color: color)
@@ -76,23 +76,23 @@ class ViewController: UIViewController {
         return shapeLayer
     }
     
-    func createCircle(path: UIBezierPath, layer: CALayer, radius: CGFloat? = 5, color: CGColor? = nil) {
+    func createCircle(_ path: UIBezierPath, layer: CALayer, radius: CGFloat? = 5, color: CGColor? = nil) {
         
         let orbiter = UIBezierPath()
         let ovalStartAngle = CGFloat(90.01 * M_PI/180)
         let ovalEndAngle = CGFloat(90 * M_PI/180 + 2*M_PI)
-        orbiter.addArcWithCenter(CGPointMake(0, 0),
+        orbiter.addArc(withCenter: CGPoint(x: 0, y: 0),
             radius: radius!,
             startAngle: ovalStartAngle,
             endAngle: ovalEndAngle,
             clockwise: true)
         
         let orbitLayer = CAShapeLayer()
-        orbitLayer.path = orbiter.CGPath
+        orbitLayer.path = orbiter.cgPath
         if( color != nil) {
             orbitLayer.fillColor = color
         } else {
-            orbitLayer.fillColor = UIColor.whiteColor().CGColor
+            orbitLayer.fillColor = UIColor.white.cgColor
         }
         
         if let inverseRotationTransform = calcInverse4x4(getRotationMatrix(layer.transform)) {
@@ -108,18 +108,18 @@ class ViewController: UIViewController {
         
         let anim = CAKeyframeAnimation(keyPath: "position")
         
-        anim.path = path.CGPath
+        anim.path = path.cgPath
         
         anim.repeatCount = Float.infinity
         anim.duration = 3.0
-        anim.removedOnCompletion = false
+        anim.isRemovedOnCompletion = false
         anim.fillMode = kCAFillModeForwards
         
-        orbitLayer.addAnimation(anim, forKey: "animate position along path")
+        orbitLayer.add(anim, forKey: "animate position along path")
 
     }
     
-    func addPlaneToLayer(plane0: CALayer, plane1: CALayer) {
+    func addPlaneToLayer(_ plane0: CALayer, plane1: CALayer) {
         plane0.addSublayer(plane1)
     }
     
@@ -139,14 +139,14 @@ class ViewController: UIViewController {
         let randomR = CGFloat(arc4random_uniform(UInt32(101))) / 100.0
         let randomG = CGFloat(arc4random_uniform(UInt32(101))) / 100.0
         let randomB = CGFloat(arc4random_uniform(UInt32(101))) / 100.0
-        return UIColor(red: randomR, green: randomG, blue: randomB, alpha: 1.0).CGColor
+        return UIColor(red: randomR, green: randomG, blue: randomB, alpha: 1.0).cgColor
     }
     
-    func degreesToRadians(degrees: Double) -> CGFloat {
+    func degreesToRadians(_ degrees: Double) -> CGFloat {
         return CGFloat(degrees * M_PI / 180.0)
     }
     
-    func calcDeterminate4x4(transform: CATransform3D) -> CGFloat {
+    func calcDeterminate4x4(_ transform: CATransform3D) -> CGFloat {
         return transform.m11 * transform.m22 * transform.m33 * transform.m44 +
                transform.m11 * transform.m23 * transform.m34 * transform.m42 +
                transform.m11 * transform.m24 * transform.m32 * transform.m43 +
@@ -173,7 +173,7 @@ class ViewController: UIViewController {
                transform.m14 * transform.m23 * transform.m31 * transform.m42
     }
     
-    func calcInverse4x4(transform: CATransform3D) -> CATransform3D? {
+    func calcInverse4x4(_ transform: CATransform3D) -> CATransform3D? {
         let a = transform
         let detA = calcDeterminate4x4(a)
         if detA == 0.0 {
@@ -202,12 +202,12 @@ class ViewController: UIViewController {
         
     }
     
-    func getTranslation(transform: CATransform3D) -> [CGFloat] {
+    func getTranslation(_ transform: CATransform3D) -> [CGFloat] {
         let translationMatrix = [transform.m14, transform.m24, transform.m34, transform.m44]
         return translationMatrix
     }
     
-    func getScalingMatrix(transform: CATransform3D) -> [CGFloat] {
+    func getScalingMatrix(_ transform: CATransform3D) -> [CGFloat] {
         let sX = calcScalar(transform.m11, transform.m21, transform.m31)
         let sY = calcScalar(transform.m12, transform.m22, transform.m32)
         let sZ = calcScalar(transform.m13, transform.m23, transform.m33)
@@ -215,7 +215,7 @@ class ViewController: UIViewController {
         return [sX, sY, sZ]
     }
     
-    func getRotationMatrix(transform: CATransform3D) -> CATransform3D {
+    func getRotationMatrix(_ transform: CATransform3D) -> CATransform3D {
         let scalingMatrix = getScalingMatrix(transform)
         
         let rX1 = transform.m11 / scalingMatrix[0]
@@ -233,7 +233,7 @@ class ViewController: UIViewController {
         return CATransform3D(m11: rX1, m12: rY1, m13: rZ1, m14: 0, m21: rX2, m22: rY2, m23: rZ2, m24: 0, m31: rX3, m32: rY3, m33: rZ3, m34: 0, m41:0, m42:0, m43: 0, m44: 1)
     }
     
-    func calcScalar(vals: CGFloat...) -> CGFloat {
+    func calcScalar(_ vals: CGFloat...) -> CGFloat {
         var scalar = CGFloat(0.0)
         
         for val in vals {
@@ -243,9 +243,9 @@ class ViewController: UIViewController {
         return sqrt(scalar)
     }
     
-    func setupEmitterLayer(layer: CALayer) {
+    func setupEmitterLayer(_ layer: CALayer) {
         emitterLayer.frame = view.bounds
-        emitterLayer.seed = UInt32(NSDate().timeIntervalSince1970)
+        emitterLayer.seed = UInt32(Date().timeIntervalSince1970)
         emitterLayer.renderMode = kCAEmitterLayerAdditive
         emitterLayer.drawsAsynchronously = true
         setEmitterPosition(layer)
@@ -253,12 +253,12 @@ class ViewController: UIViewController {
     
     func setupEmitterCell() {
         
-        emitterCell.contents = UIImage(named: "smoke")?.CGImage
+        emitterCell.contents = UIImage(named: "smoke")?.cgImage
         
         emitterCell.velocity = 20.0
         emitterCell.velocityRange = 100.0
         
-        emitterCell.color = UIColor(red: 11/255, green: 152/255, blue: 232/255, alpha: 0.135802).CGColor
+        emitterCell.color = UIColor(red: 11/255, green: 152/255, blue: 232/255, alpha: 0.135802).cgColor
         emitterCell.redRange = 0.0
         emitterCell.greenRange = 0.0
         emitterCell.blueRange = 0.2
@@ -275,8 +275,8 @@ class ViewController: UIViewController {
         emitterCell.zAcceleration = 150
     }
     
-    func setEmitterPosition(layer: CALayer) {
-        emitterLayer.emitterPosition = CGPoint(x: CGRectGetMidX(layer.bounds), y: CGRectGetMidY(layer.bounds))
+    func setEmitterPosition(_ layer: CALayer) {
+        emitterLayer.emitterPosition = CGPoint(x: layer.bounds.midX, y: layer.bounds.midY)
         emitterLayer.emitterZPosition = 100.0
     }
 
